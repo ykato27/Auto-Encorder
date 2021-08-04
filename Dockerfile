@@ -1,12 +1,11 @@
 FROM ubuntu:20.04
 
-ENV PYTHON_VERSION 3.9.5
+ENV DEBIAN_FRONTEND=noninteractive
+
+ENV PYTHON_VERSION 3.9.6
 ENV PYTHON_ROOT /tmp/Python/python-$PYTHON_VERSION
 ENV PATH $PYTHON_ROOT/bin:$PATH
 ENV PYENV_ROOT /tmp/.pyenv
-
-WORKDIR /usr/src/app
-ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update \
     && apt-get install -y locales \
@@ -40,6 +39,10 @@ RUN /usr/local/bin/python-build -v $PYTHON_VERSION $PYTHON_ROOT
 RUN rm -rf $PYENV_ROOT
 
 RUN pip install --upgrade pip
+RUN pip install torch==1.9.0+cpu \
+    torchvision==0.10.0+cpu \
+    torchaudio==0.9.0 \
+    -f https://download.pytorch.org/whl/torch_stable.html
 
 COPY requirements.txt ./
 RUN pip install -r requirements.txt

@@ -89,4 +89,7 @@
 
 ## 環境詳細
 
+- MacBook Air (Retina, 13-inch, 2018)
+- 1.6 GHz デュアルコアIntel Core i5
+- 8 GB 2133 MHz LPDDR3
 - Google Colab

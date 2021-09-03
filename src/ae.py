@@ -1,19 +1,19 @@
-import torch
-from torch.utils.data import DataLoader
-import torchvision
-import torch.nn.functional as F
-
-import numpy as np
-import cv2
-
-from pathlib import Path
 import pprint
+from pathlib import Path
 
-from model import AutoEncoder, AE_CNN
+import cv2
+import numpy as np
+import torch
+import torch.nn.functional as F
+import torchvision
+from torch.utils.data import DataLoader
+
+from model import AE_CNN, AutoEncoder
 
 
 def parse_args():
     import argparse
+
     parser = argparse.ArgumentParser()
     parser.add_argument("-b", "--batchsize", type=int, default=50, help="batchsize")
     parser.add_argument("-e", "--epoch", type=int, default=100, help="iteration")
@@ -21,7 +21,7 @@ def parse_args():
     parser.add_argument("--graph", default=None, help="computational graph")
     parser.add_argument("--cnn", action="store_true", help="CNN")
     parser.add_argument("--lam", type=float, default=0.0, help="weight decay")
-    #parser.add_argument("-m", "--model", default="autoencoder.model", help="model file name")
+    # parser.add_argument("-m", "--model", default="autoencoder.model", help="model file name")
     parser.add_argument("-r", "--result", default="result", help="result directory")
     args = parser.parse_args()
 
@@ -39,7 +39,7 @@ def main(args):
         print("CPU mode")
 
     # モデル作成
-        # CNNか全結合モデルか引数で選べるようにしてある
+    # CNNか全結合モデルか引数で選べるようにしてある
     if args.cnn:
         autoencoder = AE_CNN().to(device)
         print("CNN model")
@@ -51,10 +51,18 @@ def main(args):
     optimizer = torch.optim.Adam(autoencoder.parameters(), weight_decay=args.lam)
 
     # データを読み込み
-    train = MNIST(root=".", download=True, train=True,
-                  transform=lambda x: np.asarray(x, dtype=np.float32).ravel() / 255)
-    test = MNIST(root=".", download=True, train=False,
-                 transform=lambda x: np.asarray(x, dtype=np.float32).ravel() / 255)
+    train = MNIST(
+        root=".",
+        download=True,
+        train=True,
+        transform=lambda x: np.asarray(x, dtype=np.float32).ravel() / 255,
+    )
+    test = MNIST(
+        root=".",
+        download=True,
+        train=False,
+        transform=lambda x: np.asarray(x, dtype=np.float32).ravel() / 255,
+    )
     # data loaderを作る
     train_loader = DataLoader(train, args.batchsize)
 

@@ -1,7 +1,7 @@
 import torch
+import torch.nn.functional as F
 from torch import nn
 from torch.nn.parameter import Parameter
-import torch.nn.functional as F
 
 
 def compose(x, funcs):
@@ -29,14 +29,23 @@ class AutoEncoder(nn.Module):
         return h
 
     def encode(self, x):
-        return compose(x, [
-            self.fc1, F.relu,
-            self.fc2, F.relu,
-            self.fc3, F.relu,
-            self.fc4, F.relu,
-            self.fc5, F.relu,
-            self.fc6, F.relu
-        ])
+        return compose(
+            x,
+            [
+                self.fc1,
+                F.relu,
+                self.fc2,
+                F.relu,
+                self.fc3,
+                F.relu,
+                self.fc4,
+                F.relu,
+                self.fc5,
+                F.relu,
+                self.fc6,
+                F.relu,
+            ],
+        )
 
     def decode(self, c):
         # encoderと重みを共有 (tied-weight)
@@ -79,21 +88,38 @@ class AE_CNN(nn.Module):
         return h
 
     def encode(self, x):
-        return compose(x, [
-            self.conv1, self.bne1, F.relu,
-            self.conv2, self.bne2, F.relu,
-            self.conv3, self.bne3, F.relu,
-            self.conv4, self.bne4, F.relu
-        ])
+        return compose(
+            x,
+            [
+                self.conv1,
+                self.bne1,
+                F.relu,
+                self.conv2,
+                self.bne2,
+                F.relu,
+                self.conv3,
+                self.bne3,
+                F.relu,
+                self.conv4,
+                self.bne4,
+                F.relu,
+            ],
+        )
 
     def decode(self, c):
-        return compose(c, [
-            lambda x: F.conv_transpose2d(x, self.conv4.weight),
-            self.bnd4, F.relu,
-            lambda x: F.conv_transpose2d(x, self.conv3.weight, stride=2),
-            self.bnd3, F.relu,
-            lambda x: F.conv_transpose2d(x, self.conv2.weight),
-            self.bnd2, F.relu,
-            lambda x: F.conv_transpose2d(x, self.conv1.weight, stride=2, padding=2),
-            torch.sigmoid
-        ])
+        return compose(
+            c,
+            [
+                lambda x: F.conv_transpose2d(x, self.conv4.weight),
+                self.bnd4,
+                F.relu,
+                lambda x: F.conv_transpose2d(x, self.conv3.weight, stride=2),
+                self.bnd3,
+                F.relu,
+                lambda x: F.conv_transpose2d(x, self.conv2.weight),
+                self.bnd2,
+                F.relu,
+                lambda x: F.conv_transpose2d(x, self.conv1.weight, stride=2, padding=2),
+                torch.sigmoid,
+            ],
+        )

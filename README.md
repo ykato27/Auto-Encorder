@@ -87,9 +87,14 @@
 - オートエンコーダ（自己符号化器：AutoEncoder）とは、ニューラルネットワークの1つです。入力されたデータを一度圧縮し、重要な特徴量だけを残した後、再度もとの次元に復元処理をするアルゴリズムを意味します。このように、小さい次元に落とし込む作業を次元削減や特徴抽出と呼びますが、オートエンコーダはそれだけでなく、生成モデルとしても用いられます。
 - オートエンコーダは、2006年にトロント大学のコンピュータ科学および認知心理学の研究者であるジェフリー・ヒントン氏らによって提唱されました。
 
+## Display notebooks
+
+- [View Jupyter notebooks in nbviewer](https://nbviewer.jupyter.org/github/ykato27/AutoEncorder/tree/main/notebooks/)
+
 ## 環境詳細
 
 - MacBook Air (Retina, 13-inch, 2018)
 - 1.6 GHz デュアルコアIntel Core i5
 - 8 GB 2133 MHz LPDDR3
+
 - Google Colab

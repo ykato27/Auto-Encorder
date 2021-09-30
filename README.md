@@ -16,17 +16,24 @@
 │   ├── AutoEncoder_Pytorch_example.ipynb
 │   ├── Convolutional_AutoEncoder_Pytorch_example.ipynb
 │   ├── Google_Colab
-│   │   ├── AE_CIFAR10.ipynb
-│   │   ├── AutoEncoder_Keras.ipynb
-│   │   ├── AutoEncoder_Pytorch.ipynb
-│   │   ├── Convolutional_Autoencoder.ipynb
-│   │   ├── Deep_Autoencoder.ipynb
-│   │   ├── Denoising_Autoencoder.ipynb
-│   │   ├── Sparse_Autoencoder.ipynb
-│   │   ├── VAE_Pyro.ipynb
-│   │   ├── VAE_Pytorch.ipynb
-│   │   ├── anomaly_detection_autoencoder_2.ipynb
-│   │   └── model_based_optimization_witth_vae.ipynb
+│   │   ├── AE
+│   │   │   ├── AE_CIFAR10.ipynb
+│   │   │   ├── AutoEncoder_Keras.ipynb
+│   │   │   ├── AutoEncoder_Pytorch.ipynb
+│   │   │   ├── Convolutional_Autoencoder.ipynb
+│   │   │   ├── Deep_Autoencoder.ipynb
+│   │   │   ├── Denoising_Autoencoder.ipynb
+│   │   │   ├── Sparse_Autoencoder.ipynb
+│   │   │   ├── ae_mnist_gdl_tf.ipynb
+│   │   │   ├── ae_mnist_tf.ipynb
+│   │   │   └── anomaly_detection_autoencoder_2.ipynb
+│   │   └── VAE
+│   │       ├── 01_Variational_autoencoder.ipynb
+│   │       ├── VAE_Pyro.ipynb
+│   │       ├── VAE_Pytorch.ipynb
+│   │       ├── model_based_optimization_witth_vae.ipynb
+│   │       ├── vae_latent_space.ipynb
+│   │       └── vae_mnist_conv_lightning.ipynb
 │   └── data
 │       └── MNIST
 │           └── raw

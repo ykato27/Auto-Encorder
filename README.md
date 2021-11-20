@@ -17,6 +17,7 @@
 │   ├── Convolutional_AutoEncoder_Pytorch_example.ipynb
 │   ├── Google_Colab
 │   │   ├── AE
+│   │   │   ├── 10_autoencoder.ipynb
 │   │   │   ├── AE_CIFAR10.ipynb
 │   │   │   ├── AutoEncoder_Keras.ipynb
 │   │   │   ├── AutoEncoder_Pytorch.ipynb
@@ -29,6 +30,7 @@
 │   │   │   └── anomaly_detection_autoencoder_2.ipynb
 │   │   └── VAE
 │   │       ├── 01_Variational_autoencoder.ipynb
+│   │       ├── 11_VAE.ipynb
 │   │       ├── VAE_Pyro.ipynb
 │   │       ├── VAE_Pytorch.ipynb
 │   │       ├── model_based_optimization_witth_vae.ipynb
